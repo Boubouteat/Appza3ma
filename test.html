@@ -9,21 +9,46 @@
 <body>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    function showJoinButton() {
         Swal.fire({
-            title: 'Borhane Message',
-            text: 'Welcome to the page!',
+            title: 'Join My Telegram Channel',
+            text: 'Click to join the channel!',
             icon: 'info',
             showCloseButton: true,
-            confirmButtonText: 'Open',
+            confirmButtonText: 'Join Now',
+            confirmButtonColor: '#4CAF50', // لون الزر الأخضر
+            allowOutsideClick: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // فتح قناة التليجرام
+                window.open("https://t.me/YourTelegramChannel", '_blank');
+                // عرض زر البنفسجي "Open App"
+                showOpenButton();
+            }
+        });
+    }
+
+    function showOpenButton() {
+        Swal.fire({
+            title: 'Borhane Message',
+            text: 'Now you can open the app!',
+            icon: 'success',
+            showCloseButton: true,
+            confirmButtonText: 'Open App',
+            confirmButtonColor: '#800080', // لون الزر البنفسجي
             showCancelButton: true,
             cancelButtonText: 'Close'
         }).then((result) => {
             if (result.isConfirmed) {
-                // فتح الرابط عند النقر على زر "Open"
+                // فتح رابط التطبيق عند النقر على زر "Open App"
                 window.location.href = "https://t.me/miniappscenterbot?startapp=aW52PTIxMDQ4Mw==";
             }
         });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // إظهار زر الانضمام عند تحميل الصفحة
+        showJoinButton();
     });
 </script>
 
