@@ -95,21 +95,27 @@
         maintenanceModal.show();
     }
 
-    // Function to fetch user data
-    function fetchUserData() {
-        // Here you would typically fetch data from an API
-        // For demonstration, we will use static data
-        const userData = {
-            id: 12345,
-            first_name: "Borhane",
-            last_name: "Hex",
-            photo_url: "https://example.com/photo.jpg", // Replace with a valid image URL
-        };
+    // Function to fetch user data from Telegram
+    async function fetchUserData() {
+        // Here you would typically fetch data from Telegram Bot API
+        const userId = "<YOUR_USER_ID>"; // Replace with the actual user ID
+        const token = "<YOUR_BOT_TOKEN>"; // Replace with your Telegram Bot token
+        const url = `https://api.telegram.org/bot${token}/getChat?chat_id=${userId}`;
 
-        // Display user data
-        document.getElementById('userName').textContent = `${userData.first_name} ${userData.last_name}`;
-        document.getElementById('userPhoto').src = userData.photo_url;
-        document.getElementById('userDataContainer').style.display = 'block';
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            if (data.ok) {
+                const userData = data.result;
+                document.getElementById('userName').textContent = userData.first_name || "User";
+                document.getElementById('userPhoto').src = userData.photo_url || "default_photo_url.jpg"; // Replace with a default photo URL if needed
+                document.getElementById('userDataContainer').style.display = 'block';
+            } else {
+                console.error("Failed to fetch user data:", data.description);
+            }
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
     }
 
     document.addEventListener('DOMContentLoaded', function() {
