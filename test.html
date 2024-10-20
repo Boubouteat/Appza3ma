@@ -9,6 +9,12 @@
 </head>
 <body>
 
+<!-- User Data Display -->
+<div class="container mt-4" id="userDataContainer" style="display: none;">
+    <h2 class="text-center">Welcome, <span id="userName"></span>!</h2>
+    <img id="userPhoto" src="" alt="User Photo" class="rounded-circle mx-auto d-block" style="width: 100px; height: 100px;">
+</div>
+
 <!-- Modal for Join Telegram Channel -->
 <div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -89,7 +95,25 @@
         maintenanceModal.show();
     }
 
+    // Function to fetch user data
+    function fetchUserData() {
+        // Here you would typically fetch data from an API
+        // For demonstration, we will use static data
+        const userData = {
+            id: 12345,
+            first_name: "Borhane",
+            last_name: "Hex",
+            photo_url: "https://example.com/photo.jpg", // Replace with a valid image URL
+        };
+
+        // Display user data
+        document.getElementById('userName').textContent = `${userData.first_name} ${userData.last_name}`;
+        document.getElementById('userPhoto').src = userData.photo_url;
+        document.getElementById('userDataContainer').style.display = 'block';
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
+        fetchUserData(); // Fetch and display user data
         if (botUnderMaintenance) {
             showMaintenanceModal();
         } else {
