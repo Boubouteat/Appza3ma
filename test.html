@@ -3,16 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading Page with Bootstrap</title>
+    <title>User Info Display with Bootstrap</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* لون الخلفية */
+            font-family: Arial, sans-serif; /* نوع الخط */
+        }
+        .modal-header {
+            background-color: #6f42c1; /* لون رأس النافذة المنبثقة */
+            color: white; /* لون النص */
+        }
+        .btn-purple {
+            background-color: #6f42c1; /* لون الزر الأرجواني */
+            color: white; /* لون نص الزر */
+        }
+        .btn-purple:hover {
+            background-color: #563d7a; /* لون الزر عند المرور */
+        }
+        .rounded-circle {
+            border: 2px solid #6f42c1; /* إطار الصورة */
+        }
+        #userDataContainer {
+            transition: opacity 0.5s ease; /* تأثير التلاشي عند ظهور البيانات */
+            opacity: 0;
+        }
+        #userDataContainer.show {
+            opacity: 1; /* يظهر البيانات */
+        }
+    </style>
 </head>
 <body>
 
 <!-- User Data Display -->
-<div class="container mt-4" id="userDataContainer" style="display: none;">
+<div class="container mt-4" id="userDataContainer">
     <h2 class="text-center">Welcome, <span id="userName"></span>!</h2>
     <img id="userPhoto" src="" alt="User Photo" class="rounded-circle mx-auto d-block" style="width: 100px; height: 100px;">
+    <p class="text-center mt-3">Username: <strong id="userUsername"></strong></p>
+    <p class="text-center">ID: <strong id="userId"></strong></p>
 </div>
 
 <!-- Modal for Join Telegram Channel -->
@@ -108,8 +137,12 @@
             if (data.ok) {
                 const userData = data.result;
                 document.getElementById('userName').textContent = userData.first_name || "User";
+                document.getElementById('userUsername').textContent = userData.username || "N/A";
+                document.getElementById('userId').textContent = userData.id || "N/A";
                 document.getElementById('userPhoto').src = userData.photo_url || "default_photo_url.jpg"; // Replace with a default photo URL if needed
-                document.getElementById('userDataContainer').style.display = 'block';
+                const userDataContainer = document.getElementById('userDataContainer');
+                userDataContainer.classList.add('show'); // إضافة تأثير التلاشي
+                userDataContainer.style.display = 'block';
             } else {
                 console.error("Failed to fetch user data:", data.description);
             }
