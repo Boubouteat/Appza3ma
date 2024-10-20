@@ -5,19 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loading Page with SweetAlert</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        .loading-frame {
-            display: none;
-            width: 100vw;
-            height: 100vh;
-            border: none;
-        }
-    </style>
 </head>
 <body>
 
@@ -28,16 +15,17 @@
             text: 'Welcome to the page!',
             icon: 'info',
             showCloseButton: true,
-            confirmButtonText: 'Close'
+            confirmButtonText: 'Open',
+            showCancelButton: true,
+            cancelButtonText: 'Close'
         }).then((result) => {
-            if (result.isConfirmed || result.isDismissed) {
-                document.getElementById('frame-view').style.display = 'block';
+            if (result.isConfirmed) {
+                // فتح الرابط عند النقر على زر "Open"
+                window.location.href = "https://t.me/miniappscenterbot?startapp=aW52PTIxMDQ4Mw==";
             }
         });
     });
 </script>
-
-<iframe id="frame-view" class="loading-frame" src="https://t.me/miniappscenterbot?startapp=aW52PTIxMDQ4Mw==" frameborder="0"></iframe>
 
 </body>
 </html>
