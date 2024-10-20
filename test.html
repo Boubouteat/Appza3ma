@@ -11,17 +11,28 @@
 <script>
     function showJoinButton() {
         Swal.fire({
-            title: 'Join My Telegram Channel',
-            text: 'Click to join the channel!',
-            icon: 'info',
+            title: 'Borhane Message',
+            text: '
+مرحبًا بك!
+
+لتتمكن من فتح البوت الخاص بنا، يجب عليك أولاً الانضمام إلى قناتنا على Telegram. إذا كنت قد انضممت بالفعل، يرجى التحقق من القناة ودعمنا من خلال المشاركة والتفاعل مع المحتوى.
+
+لماذا يجب عليك الانضمام؟
+- **دعمنا:** من خلال الانضمام إلى القناة، تساعدنا في تقديم محتوى أفضل وخدمات أكثر فائدة لك وللجميع.
+- التحديثات: ستحصل على آخر الأخبار والتحديثات حول البوت والمميزات الجديدة.
+
+**يرجى التحقق من القناة بعد الانضمام لضمان فتح البوت الخاص بنا.**
+
+شكرًا لدعمك!',
+            icon: 'warning',
             showCloseButton: true,
-            confirmButtonText: 'Join Now',
+            confirmButtonText: 'إفحص',
             confirmButtonColor: '#4CAF50', // لون الزر الأخضر
             allowOutsideClick: false
         }).then((result) => {
             if (result.isConfirmed) {
                 // فتح قناة التليجرام
-                window.open("https://t.me/YourTelegramChannel", '_blank');
+                window.open("https://t.me/wgoRSZPpeiphY2Jk", '_blank');
                 // عرض زر البنفسجي "Open App"
                 showOpenButton();
             }
@@ -31,7 +42,17 @@
     function showOpenButton() {
         Swal.fire({
             title: 'Borhane Message',
-            text: 'Now you can open the app!',
+            text: '
+
+مرحبًا بك في بوتنا!
+
+يمكنك الآن فتح البوت الخاص بنا، حيث يقدم لك العديد من المميزات الرائعة:
+
+- **تنظيم البوتات الخاصة بك:** يساعدك على تنظيم جميع البوتات الخاصة بك في مكان واحد، مما يجعل الوصول إليها أسرع وأسهل.
+- **تجنب فقدان البوتات: يمكنك تجنب فقدان أي بوت أو عدم الوصول إليه خلال اليوم، مما يضمن لك الاستفادة القصوى من جميع أدواتك.
+- **محتوى موثوق:** يحتوي البوت على محتوى مستورد من موقع Taps Center، مما يعني أنك محمي 
+
+استمتع بتجربتك مع بوتنا وكن دائمًا على اتصال بكل ما تحتاجه بسهولة ويسر!',
             icon: 'success',
             showCloseButton: true,
             confirmButtonText: 'Open App',
