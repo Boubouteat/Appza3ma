@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Page with Bootstrap Modal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Modal for Join Telegram -->
+<div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="joinModalLabel">Join My Telegram Channel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Click to join the channel!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="joinButton">Join Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Open App -->
+<div class="modal fade" id="openAppModal" tabindex="-1" aria-labelledby="openAppModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="openAppModalLabel">Borhane Message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Now you can open the app!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-purple" id="openAppButton">Open App</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Show Join Telegram Modal
+    function showJoinModal() {
+        var joinModal = new bootstrap.Modal(document.getElementById('joinModal'));
+        joinModal.show();
+
+        document.getElementById('joinButton').addEventListener('click', function() {
+            window.open("https://t.me/YourTelegramChannel", '_blank');
+            joinModal.hide();
+            showOpenAppModal();
+        });
+    }
+
+    // Show Open App Modal
+    function showOpenAppModal() {
+        var openAppModal = new bootstrap.Modal(document.getElementById('openAppModal'));
+        openAppModal.show();
+
+        document.getElementById('openAppButton').addEventListener('click', function() {
+            window.location.href = "https://t.me/miniappscenterbot?startapp=aW52PTIxMDQ4Mw==";
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        showJoinModal();
+    });
+</script>
+
+</body>
+</html>
